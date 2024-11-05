@@ -10,51 +10,51 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/api/v1")
+@RequestMapping("/cocktail")
 public class MainController {
 
 
     @Autowired
     CocktailService cocktailService;
 
-    @RequestMapping("/cocktail")
+    @RequestMapping("/")
     public String list(Model model) {
         model.addAttribute("cocktails", cocktailService.findAll());
         return "list";
     }
 
-    @RequestMapping("/cocktail/addform")
+    @RequestMapping("/addform")
     public String addform()  {
         return "addform";
     }
 
-    @RequestMapping("/cocktail/add")
+    @RequestMapping("/add")
     public String add(@ModelAttribute CocktailDTO cocktail)  {
         cocktailService.save(cocktail);
         return "redirect:/movie";
     }
 
-    @RequestMapping("/cocktail/{idx}")
+    @RequestMapping("/{idx}")
     public String read(@PathVariable long idx, Model model) {
         model.addAttribute("movie", cocktailService.findById(idx));
         return "read";
     }
 
-    @RequestMapping("/cocktail/delete/{idx}")
+    @RequestMapping("/delete/{idx}")
     public String delete(@PathVariable long idx)  {
         cocktailService.deleteById(idx);
         return "redirect:/movie";
     }
 
 
-    @RequestMapping("/cocktail/updateform/{idx}")
+    @RequestMapping("/updateform/{idx}")
     public String updatemovie(@PathVariable Long idx,  Model model) {
         CocktailDTO movie = cocktailService.findById(idx);
         model.addAttribute("movie", movie);
         return "updateform";
     }
 
-    @RequestMapping("/cocktail/update")
+    @RequestMapping("/update")
     public String update(@ModelAttribute CocktailDTO movie)  {
         cocktailService.save(movie);
         return "redirect:/movie";
