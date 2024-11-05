@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="/movie/update" th:object="${movie}" >
+    idx <input th:field="*{movie.idx}" readonly> <br/>
+    title <input th:field="*{movie.title}"> <br/>
+    content <textarea th:field="*{movie.content}" rows="5" cols="40">
+</textarea><br/>
+    image <input th:field="*{movie.image}"> <br/>
+    <input type="submit" value="수정"/>
+</form>
+
+
+</body>
+</html>

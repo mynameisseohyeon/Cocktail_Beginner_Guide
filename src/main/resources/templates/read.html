@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+게시물 읽기 <br/>
+title : [[${movie.title}]] <br/>
+<img th:src="${movie.image}" /> <br/>
+
+<textarea rows="5" cols="40" th:text="${movie.content}">
+
+</textarea><br/>
+
+<a th:href="@{/movie/delete/{idx}(idx=${movie.idx})}">[삭제]</a>
+<a th:href="@{/movie/updateform/{idx}(idx=${movie.idx})}">[수정]</a>
+
+
+</body>
+</html>
