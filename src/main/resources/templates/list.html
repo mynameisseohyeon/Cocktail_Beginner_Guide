@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Cocktail List</title>
 </head>
 <body>
 
@@ -15,7 +15,6 @@
     <a th:href="@{/cocktail/delete/{idx}(idx=${cocktail.idx})}">삭제</a>
     <a th:href="@{/cocktail/updateform/{idx}(idx=${cocktail.idx})}">수정</a>
 </div>
-
 
 </body>
 </html>

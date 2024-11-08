@@ -5,16 +5,44 @@
     <title>Title</title>
 </head>
 <body>
-
-
 <form action="/cocktail/add">
-    name <input name="name"> <br/>
-    content <textarea name="cocktailInfo" rows="5" cols="40">
-</textarea><br/>
-    image <input name="image"> <br/>
-    <input type="submit" value="작성"/>
+    새로운 칵테일을 추가해보세요
+    <br><br>
+
+    칵테일 이름: <input name="name"><br><br>
+
+    도수:
+    <select name="abv">
+        <option value="none">=== 선택 ===</option>
+        <option value="10%">10%</option>
+        <option value="20%">20%</option>
+        <option value="30%">30%</option>
+        <option value="40%">40%</option>
+        <option value="50%">50%</option>
+    </select>
+    <br><br>
+
+    나이대:
+    <select name="age_group">
+        <option value="none">=== 선택 ===</option>
+        <option value="20-30대">20-30대</option>
+        <option value="30-40대">30-40대</option>
+        <option value="40-50대">40-50대</option>
+        <option value="50-60대">50-60대</option>
+    </select>
+    <br><br>
+
+    가격: <input name="price_range"><br><br>
+
+    어울리는 안주: <input name="snacks"><br><br>
+
+    맛: <input name="taste"><br><br>
+
+    소개: <textarea name="cocktail_info" rows="5" cols="40"></textarea><br><br>
+
+    이미지 경로: <input name="image"><br><br>
+
+    <input type="submit" value="작성">
 </form>
-
-
 </body>
 </html>
