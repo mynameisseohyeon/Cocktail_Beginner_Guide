@@ -6,14 +6,14 @@
 </head>
 <body>
 
-강남 영화 마을 <a href="/movie/addform">[ADD]</a> <br/>
-<div th:each="movie : ${movies}">
-    <span th:text="${movie.idx}"></span>
-    <a th:href="@{/movie/{idx}(idx=${movie.idx})}"><span th:text="${movie.title}"></span></a>
-    <span th:text="${movie.content}"></span>
-    <img th:src="${movie.image}" width="50" height="50"/>
-    <a th:href="@{/movie/delete/{idx}(idx=${movie.idx})}">삭제</a>
-    <a th:href="@{/movie/updateform/{idx}(idx=${movie.idx})}">수정</a>
+강남 영화 마을 <a href="/cocktail/addform">[ADD]</a> <br/>
+<div th:each="cocktail : ${cocktails}">
+    <span th:text="${cocktail.idx}"></span>
+    <a th:href="@{/cocktail/{idx}(idx=${cocktail.idx})}"><span th:text="${cocktail.name}"></span></a>
+    <span th:text="${cocktail.cocktailInfo}"></span>
+    <img th:src="${cocktail.image}" width="50" height="50"/>
+    <a th:href="@{/cocktail/delete/{idx}(idx=${cocktail.idx})}">삭제</a>
+    <a th:href="@{/cocktail/updateform/{idx}(idx=${cocktail.idx})}">수정</a>
 </div>
 
 

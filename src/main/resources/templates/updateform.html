@@ -6,12 +6,12 @@
 </head>
 <body>
 
-<form action="/movie/update" th:object="${movie}" >
-    idx <input th:field="*{movie.idx}" readonly> <br/>
-    title <input th:field="*{movie.title}"> <br/>
-    content <textarea th:field="*{movie.content}" rows="5" cols="40">
+<form action="/cocktail/update" th:object="${cocktail}" >
+    idx <input th:field="*{cocktail.idx}" readonly> <br/>
+    title <input th:field="*{cocktail.title}"> <br/>
+    content <textarea th:field="*{cocktail.content}" rows="5" cols="40">
 </textarea><br/>
-    image <input th:field="*{movie.image}"> <br/>
+    image <input th:field="*{cocktail.image}"> <br/>
     <input type="submit" value="수정"/>
 </form>
 

@@ -10,6 +10,8 @@ public class Utils {
                 .ageGroup(entity.getAgeGroup())
                 .snacks(entity.getSnacks())
                 .priceRange(entity.getPriceRange())
+                .cocktailInfo(entity.getCocktailInfo())
+                .image(entity.getImage())
                 .build();
     }
     public static Cocktail toEntity(CocktailDTO dto) {
@@ -21,6 +23,8 @@ public class Utils {
                 .ageGroup(dto.getAgeGroup())
                 .snacks(dto.getSnacks())
                 .priceRange(dto.getPriceRange())
+                .cocktailInfo(dto.getCocktailInfo())
+                .image(dto.getImage())
                 .build();
     }
 }
