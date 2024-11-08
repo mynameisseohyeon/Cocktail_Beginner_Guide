@@ -7,16 +7,23 @@
 <body>
 
 
-게시물 읽기 <br/>
-title : [[${movie.title}]] <br/>
-<img th:src="${movie.image}" /> <br/>
+칵테일 <br/>
+<br>
+칵테일 이름 : <span th:text="${cocktails.name}"></span> <br/>
+<br>
+<img th:src="${cocktails.image}" /> <br/>
+<br>
+도수 : <span th:text="${cocktails.abv}"></span> <br/>
+나이대 : <span th:text="${cocktails.ageGroup}"></span> <br/>
+가격 : <span th:text="${cocktails.priceRange}"></span> <br/>
+어울리는 안주 : <span th:text="${cocktails.snacks}"></span> <br/>
+소개 : <span th:text="${cocktails.cocktailInfo}"></span> <br/>
+맛 : <span th:text="${cocktails.taste}"></span> <br/>
+<!--<textarea rows="5" cols="40" th:text="${cocktails.name}">-->
+<!--</textarea><br/>-->
 
-<textarea rows="5" cols="40" th:text="${movie.content}">
-
-</textarea><br/>
-
-<a th:href="@{/movie/delete/{idx}(idx=${movie.idx})}">[삭제]</a>
-<a th:href="@{/movie/updateform/{idx}(idx=${movie.idx})}">[수정]</a>
+<!--<a th:href="@{/movie/delete/{idx}(idx=${movie.idx})}">[삭제]</a>-->
+<!--<a th:href="@{/movie/updateform/{idx}(idx=${movie.idx})}">[수정]</a>-->
 
 
 </body>

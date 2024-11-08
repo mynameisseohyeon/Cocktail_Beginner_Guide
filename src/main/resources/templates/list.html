@@ -1,21 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Cocktail List</title>
 </head>
 <body>
 
-강남 영화 마을 <a href="/movie/addform">[ADD]</a> <br/>
-<div th:each="movie : ${movies}">
-    <span th:text="${movie.idx}"></span>
-    <a th:href="@{/movie/{idx}(idx=${movie.idx})}"><span th:text="${movie.title}"></span></a>
-    <span th:text="${movie.content}"></span>
-    <img th:src="${movie.image}" width="50" height="50"/>
-    <a th:href="@{/movie/delete/{idx}(idx=${movie.idx})}">삭제</a>
-    <a th:href="@{/movie/updateform/{idx}(idx=${movie.idx})}">수정</a>
-</div>
-
-
+<h1>칵테일</h1>
+<table border="1">
+    <thead>
+        <tr>
+            <th>이름</th>
+            <th>가격대</th>
+        </tr>
+    </thead>
+    <tbody>
+       <tr th:each="cocktail : ${cocktails}">
+          <td th:text="${cocktail.name}">Cocktail Name</td>
+          <td th:text="${cocktail.taste}">Price Range</td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

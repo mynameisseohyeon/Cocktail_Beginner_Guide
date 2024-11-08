@@ -18,8 +18,9 @@ public class MainController {
     CocktailService cocktailService;
 
     @RequestMapping("/")
-    public String list(Model model) {
+    public String list(Model model) {// 데이터 확인
         model.addAttribute("cocktails", cocktailService.findAll());
+//        System.out.println(cocktailService.findAll());
         return "list";
     }
 
@@ -31,33 +32,34 @@ public class MainController {
     @RequestMapping("/add")
     public String add(@ModelAttribute CocktailDTO cocktail)  {
         cocktailService.save(cocktail);
-        return "redirect:/movie";
+        return "redirect:/cocktail/";
     }
 
     @RequestMapping("/{idx}")
     public String read(@PathVariable long idx, Model model) {
-        model.addAttribute("movie", cocktailService.findById(idx));
+        model.addAttribute("cocktails", cocktailService.findById(idx));
+        System.out.println(cocktailService.findById(idx));
         return "read";
     }
 
     @RequestMapping("/delete/{idx}")
     public String delete(@PathVariable long idx)  {
         cocktailService.deleteById(idx);
-        return "redirect:/movie";
+        return "redirect:/cocktails";
     }
 
 
     @RequestMapping("/updateform/{idx}")
-    public String updatemovie(@PathVariable Long idx,  Model model) {
-        CocktailDTO movie = cocktailService.findById(idx);
-        model.addAttribute("movie", movie);
+    public String updatecocktail(@PathVariable Long idx, Model model) {
+        CocktailDTO cocktail = cocktailService.findById(idx);
+        model.addAttribute("cocktails", cocktail);
         return "updateform";
     }
 
     @RequestMapping("/update")
-    public String update(@ModelAttribute CocktailDTO movie)  {
-        cocktailService.save(movie);
-        return "redirect:/movie";
+    public String update(@ModelAttribute CocktailDTO cocktail)  {
+        cocktailService.save(cocktail);
+        return "redirect:/cocktail/";
     }
 
 }

@@ -6,12 +6,36 @@
 </head>
 <body>
 
-<form action="/movie/update" th:object="${movie}" >
-    idx <input th:field="*{movie.idx}" readonly> <br/>
-    title <input th:field="*{movie.title}"> <br/>
-    content <textarea th:field="*{movie.content}" rows="5" cols="40">
+<form action="/cocktail/update" th:object="${cocktails}" >
+    <!--    idx <input th:field="*{cocktails.idx}" readonly> <br/>-->
+    칵테일 이름 <input th:field="*{name}"> <br/>
+    도수
+    <select name="abv" input th:field="*{abv}">
+        <option value="none">=== 선택 ===</option>
+        <option value="10%">10%</option>
+        <option value="20%">20%</option>
+        <option value="30%">30%</option>
+        <option value="40%">40%</option>
+        <option value="50%">50%</option>
+    </select>
+    <br><br>
+
+    나이대
+    <select name="age_group" input th:field="*{ageGroup}">
+        <option value="none">=== 선택 ===</option>
+        <option value="20-30대">20-30대</option>
+        <option value="30-40대">30-40대</option>
+        <option value="40-50대">40-50대</option>
+        <option value="50-60대">50-60대</option>
+    </select>
+    <br><br>
+
+    가격 <input name = "price_range" th:field="*{priceRange}"> <br/>
+    어울리는 안주 <input th:field="*{snacks}"> <br/>
+    맛 <input th:field="*{taste}"> <br/>
+    소개 <textarea th:field="*{cocktailInfo}" rows="5" cols="40">
 </textarea><br/>
-    image <input th:field="*{movie.image}"> <br/>
+    image <input th:field="*{image}"> <br/>
     <input type="submit" value="수정"/>
 </form>
 
