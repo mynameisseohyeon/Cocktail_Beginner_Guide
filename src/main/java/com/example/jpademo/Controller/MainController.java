@@ -37,15 +37,14 @@ public class MainController {
 
     @RequestMapping("/{idx}")
     public String read(@PathVariable long idx, Model model) {
-        model.addAttribute("cocktails", cocktailService.findById(idx));
-        System.out.println(cocktailService.findById(idx));
+        model.addAttribute("cocktail", cocktailService.findById(idx));
         return "read";
     }
 
     @RequestMapping("/delete/{idx}")
     public String delete(@PathVariable long idx)  {
         cocktailService.deleteById(idx);
-        return "redirect:/cocktails";
+        return "redirect:/cocktail/";
     }
 
 
@@ -60,6 +59,7 @@ public class MainController {
     public String update(@ModelAttribute CocktailDTO cocktail)  {
         cocktailService.save(cocktail);
         return "redirect:/cocktail/";
+
     }
 
 }

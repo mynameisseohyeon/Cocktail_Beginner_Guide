@@ -6,20 +6,15 @@
 </head>
 <body>
 
-<h1>칵테일</h1>
-<table border="1">
-    <thead>
-        <tr>
-            <th>이름</th>
-            <th>가격대</th>
-        </tr>
-    </thead>
-    <tbody>
-       <tr th:each="cocktail : ${cocktails}">
-          <td th:text="${cocktail.name}">Cocktail Name</td>
-          <td th:text="${cocktail.taste}">Price Range</td>
-    </tr>
-    </tbody>
-</table>
+강남 영화 마을 <a href="/cocktail/addform">[ADD]</a> <br/>
+<div th:each="cocktail : ${cocktails}">
+    <span th:text="${cocktail.idx}"></span>
+    <a th:href="@{/cocktail/{idx}(idx=${cocktail.idx})}"><span th:text="${cocktail.name}"></span></a>
+    <span th:text="${cocktail.cocktailInfo}"></span>
+    <img th:src="${cocktail.image}" width="50" height="50"/>
+    <a th:href="@{/cocktail/delete/{idx}(idx=${cocktail.idx})}">삭제</a>
+    <a th:href="@{/cocktail/updateform/{idx}(idx=${cocktail.idx})}">수정</a>
+</div>
+
 </body>
 </html>
