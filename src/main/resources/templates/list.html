@@ -6,15 +6,26 @@
 </head>
 <body>
 
-강남 영화 마을 <a href="/cocktail/addform">[ADD]</a> <br/>
-<div th:each="cocktail : ${cocktails}">
-    <span th:text="${cocktail.idx}"></span>
-    <a th:href="@{/cocktail/{idx}(idx=${cocktail.idx})}"><span th:text="${cocktail.name}"></span></a>
-    <span th:text="${cocktail.cocktailInfo}"></span>
-    <img th:src="${cocktail.image}" width="50" height="50"/>
-    <a th:href="@{/cocktail/delete/{idx}(idx=${cocktail.idx})}">삭제</a>
-    <a th:href="@{/cocktail/updateform/{idx}(idx=${cocktail.idx})}">수정</a>
-</div>
+<h1>칵테일 초보를 위한 칵테일 추천!</h1>
+
+<table>
+    <tr th:each="cocktail, iterStat : ${cocktails}">
+        <td>
+            <div>
+                <img th:src="${cocktail.image}" width="100" height="100" />
+                <br />
+                <a th:href="@{/cocktail/{idx}(idx=${cocktail.idx})}">
+                    <span th:text="${cocktail.name}"></span>
+                </a>
+                <br />
+                <a th:href="@{/cocktail/updateform/{idx}(idx=${cocktail.idx})}">수정</a>
+                <a th:href="@{/cocktail/delete/{idx}(idx=${cocktail.idx})}">삭제</a>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<p><a href="/cocktail/addform">[칵테일 추가하기]</a></p>
 
 </body>
 </html>

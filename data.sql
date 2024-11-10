@@ -14,7 +14,7 @@
 --    taste VARCHAR(100) NOT NULL,
 --    ageGroup VARCHAR(100) NOT NULL,
 --    snacks VARCHAR(100) NOT NULL,
---    priveRange VARCHAR(100) NOT NULL,
+--    priceRange VARCHAR(100) NOT NULL,
 --    cocktailInfo VARCHAR(100) NOT NULL,
 --    image VARCHAR(80) NOT NULL,
 --    PRIMARY KEY(idx)

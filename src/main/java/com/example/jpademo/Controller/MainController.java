@@ -20,7 +20,7 @@ public class MainController {
     @RequestMapping("/")
     public String list(Model model) {// 데이터 확인
         model.addAttribute("cocktails", cocktailService.findAll());
-//        System.out.println(cocktailService.findAll());
+        System.out.println(cocktailService.findAll());
         return "list";
     }
 

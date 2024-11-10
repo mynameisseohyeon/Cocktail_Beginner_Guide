@@ -22,7 +22,7 @@ public class Cocktail {
     private String taste; // 칵테일 맛
     private String ageGroup; // 연령대
     private String snacks; // 안주
-    private int priceRange; // 가격
+    private String priceRange; // 가격
     private String cocktailInfo; // 정보
     private String image; // 이미지
 }

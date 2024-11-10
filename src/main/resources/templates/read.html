@@ -7,13 +7,13 @@
 <body>
 
 
-게시물 읽기 <br/>
-title : [[${cocktail.title}]] <br/>
+칵테일 상세 설명 <br/>
+칵테일 명 : [[${cocktail.name}]] <br/>
 <img th:src="${cocktail.image}" /> <br/>
 
-<textarea rows="5" cols="40" th:text="${cocktail.cocktailInfo}">
+<text rows="5" cols="40" th:text="${cocktail.cocktailInfo}">
 
-</textarea><br/>
+</text><br/>
 
 <a th:href="@{/cocktail/delete/{idx}(idx=${cocktail.idx})}">[삭제]</a>
 <a th:href="@{/cocktail/updateform/{idx}(idx=${cocktail.idx})}">[수정]</a>
