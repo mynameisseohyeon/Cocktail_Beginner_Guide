@@ -8,6 +8,39 @@
 
 <h1>칵테일 초보를 위한 칵테일 추천!</h1>
 
+<form id="search-form" method="post" role="search">
+    <label for="user-search">사이트 내 검색</label>
+    <br>
+    <input
+            type="search"
+            id="user-search"
+            name="name"
+            aria-label="사이트 내용을 통해 검색">
+    <button type="submit" onclick="setFormAction()">검색</button>
+</form>
+
+<script>
+    function setFormAction() {
+        const form = document.getElementById('search-form');
+        const idx = document.getElementById('user-search').value;
+        form.action = `search/${name}`;
+    }
+</script>
+<br>
+
+<!--<form method="get" action="{idx}" role="search">-->
+<!--    <label for="user-search">사이트 내 검색</label>-->
+<!--    <br>-->
+<!--    System.out.println("아이디: ${idx}");-->
+<!--    <input-->
+<!--            type="search"-->
+<!--            id="user-search"-->
+<!--            name="idx"-->
+<!--            aria-label="사이트 내용을 통해 검색">-->
+<!--    <button type="submit">검색</button>-->
+<!--</form>-->
+<!--<br>-->
+
 <table>
     <tr th:each="cocktail, iterStat : ${cocktails}">
         <td>

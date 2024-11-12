@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("/cocktail")
@@ -39,6 +40,13 @@ public class MainController {
     public String read(@PathVariable long idx, Model model) {
         model.addAttribute("cocktail", cocktailService.findById(idx));
         return "read";
+    }
+
+    @RequestMapping("/search/{idx}")
+    public String search(@PathVariable long idx, Model model) {
+        model.addAttribute("cocktail", cocktailService.findById(idx));
+        System.out.println("아이디: ${idx}");
+        return "search";
     }
 
     @RequestMapping("/delete/{idx}")

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+칵테일 상세 설명 <br/>
+칵테일명 : [[${cocktail.name}]] <br/>
+<img th:src="${cocktail.image}" /> <br/>
+
+<text rows="5" cols="40" th:text="${cocktail.cocktailInfo}">
+
+</text><br/>
+
+<a th:href="@{/cocktail/delete/{idx}(idx=${cocktail.idx})}">[삭제]</a>
+<a th:href="@{/cocktail/updateform/{idx}(idx=${cocktail.idx})}">[수정]</a>
+
+
+</body>
+</html>
