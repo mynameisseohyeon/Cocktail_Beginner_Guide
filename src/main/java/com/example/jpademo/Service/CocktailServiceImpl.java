@@ -41,5 +41,8 @@ public class CocktailServiceImpl implements CocktailService{
         cocktailRepository.deleteById(idx);
     }
 
+    public List<CocktailDTO> findByKeyword(String keyword) {
+        return cocktailRepository.findByNameContaining(keyword);
+    }
 
 }

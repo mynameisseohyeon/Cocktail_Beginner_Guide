@@ -8,6 +8,11 @@
 
 <h1>칵테일 초보를 위한 칵테일 추천!</h1>
 
+<form action="/cocktail/search" method="get">
+    <input type="search" name="keyword" placeholder="검색어를 입력하세요.">
+    <button type="submit">검색</button>
+</form>
+
 <table>
     <tr th:each="cocktail, iterStat : ${cocktails}">
         <td>

@@ -9,4 +9,5 @@ public interface CocktailService {
     CocktailDTO findById(long idx);
     void save(CocktailDTO cocktail);
     void deleteById(long idx);
+    List<CocktailDTO> findByKeyword(String keyword);
 }
