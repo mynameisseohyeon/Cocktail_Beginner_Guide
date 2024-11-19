@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface CocktailRepository extends JpaRepository<Cocktail, Long> {
 
-    List<CocktailDTO> findByNameContaining(String keyword);
+    List<Cocktail> findByNameContaining(String keyword);
 }

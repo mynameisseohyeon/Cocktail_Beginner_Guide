@@ -41,8 +41,10 @@ public class CocktailServiceImpl implements CocktailService{
         cocktailRepository.deleteById(idx);
     }
 
+    @Override
     public List<CocktailDTO> findByKeyword(String keyword) {
-        return cocktailRepository.findByNameContaining(keyword);
+        return cocktailRepository.findByNameContaining(keyword).stream()
+                .map(Utils::toDTO) // 엔티티를 DTO로 변환
+                .collect(Collectors.toList());
     }
-
 }

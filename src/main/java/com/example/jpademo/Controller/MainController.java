@@ -33,14 +33,13 @@ public class MainController {
         return "list";
     }
 
-    @GetMapping("/search")  // 검색 시 메인 화면과 같은 ui에서 검색한 칵테일 명만 표시되도록 수정
+    @GetMapping("/search")
     public String search(String keyword, Model model) {
-        List<String> names = Arrays.asList("마가리타", "모히토", "올드 패션드", "피나 콜라다", "마티니");
-        names.stream()
-                .filter(n -> n.contains(keyword)) // 칵테일 name에 대한 검색 결과 제공
-                .forEach(System.out::println); // 검색 결과 출력
+        List<CocktailDTO> searchResults = cocktailService.findByKeyword(keyword);
+        model.addAttribute("cocktails", searchResults);
         return "list";
     }
+
 
     @RequestMapping("/addform")
     public String addform()  {
