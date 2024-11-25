@@ -47,4 +47,25 @@ public class CocktailServiceImpl implements CocktailService{
                 .map(Utils::toDTO) // 엔티티를 DTO로 변환
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<CocktailDTO> findByPriceLessThanEqual(int maxPrice) {
+        return cocktailRepository.findByPriceRangeLessThanEqual(maxPrice).stream()
+                .map(Utils::toDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<CocktailDTO> findByPriceGreaterThanEqualAndLessThan(int minPrice, int maxPrice) {
+        return cocktailRepository.findByPriceRangeGreaterThanEqualAndPriceRangeLessThan(minPrice, maxPrice).stream()
+                .map(Utils::toDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<CocktailDTO> findByPriceGreaterThanEqual(int minPrice) {
+        return cocktailRepository.findByPriceRangeGreaterThanEqual(minPrice).stream()
+                .map(Utils::toDTO)
+                .collect(Collectors.toList());
+    }
 }

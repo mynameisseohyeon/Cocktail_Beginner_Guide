@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -40,6 +40,39 @@ public class MainController {
         return "list";
     }
 
+    @GetMapping("/filter")
+    public String filter(@RequestParam(value = "price", required = false) String price, Model model) {
+        List<CocktailDTO> searchResults;
+
+        if (price != null) {
+            switch (price) {
+                case "under_10000":
+                    searchResults = cocktailService.findByPriceLessThanEqual(10000);
+                    break;
+                case "over_10000":
+                    searchResults = cocktailService.findByPriceGreaterThanEqualAndLessThan(10000, 20000);
+                    break;
+                case "over_20000":
+                    searchResults = cocktailService.findByPriceGreaterThanEqualAndLessThan(20000, 30000);
+                    break;
+                case "over_30000":
+                    searchResults = cocktailService.findByPriceGreaterThanEqualAndLessThan(30000, 40000);
+                    break;
+                case "over_40000":
+                    searchResults = cocktailService.findByPriceGreaterThanEqual(40000);
+                    break;
+                default:
+                    searchResults = cocktailService.findAll();  // 기본적으로 모든 데이터 반환
+                    break;
+            }
+        } else {
+            searchResults = cocktailService.findAll();
+        }
+
+        model.addAttribute("cocktails", searchResults);
+        model.addAttribute("selectedPrice", price);
+        return "list";
+    }
 
     @RequestMapping("/addform")
     public String addform()  {
