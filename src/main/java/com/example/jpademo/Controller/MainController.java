@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -40,6 +40,20 @@ public class MainController {
         return "list";
     }
 
+    @GetMapping("/filter")
+    public String filter(@RequestParam(value = "price", required = false) String price,
+                         @RequestParam(value = "abv", required = false) String abv,
+                         @RequestParam(value = "ageGroup", required = false) String ageGroup,
+                         Model model) {
+        List<CocktailDTO> cocktails = cocktailService.filterBySelect(price, abv, ageGroup);
+
+        model.addAttribute("cocktails", cocktails);
+        model.addAttribute("selectedPrice", price);
+        model.addAttribute("selectedAlcohol", abv);
+        model.addAttribute("selectedageGroup", ageGroup);
+
+        return "list";
+    }
 
     @RequestMapping("/addform")
     public String addform()  {
