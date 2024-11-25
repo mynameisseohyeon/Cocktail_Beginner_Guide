@@ -26,12 +26,33 @@
     <br>
     <br>
     도수<br>
-    <input type='radio' name='abv' value='under_10' onchange='this.form.submit();' /> 10% 이하
-    <input type='radio' name='abv' value='over_10' onchange='this.form.submit();' /> 10% ~ 20%
-    <input type='radio' name='abv' value='over_20' onchange='this.form.submit();' /> 20% ~ 30%
-    <input type='radio' name='abv' value='over_30' onchange='this.form.submit();' /> 30% ~ 40%
-    <input type='radio' name='abv' value='over_40' onchange='this.form.submit();' /> 40% 이상
-    <input type='radio' name='abv' value='' onchange='this.form.submit();' /> 전체
+    <input type='radio' name='abv' value='under_10'
+           th:checked="${selectedAlcohol == 'under_10'}" onchange='this.form.submit();' /> 10% 이하
+    <input type='radio' name='abv' value='over_10'
+           th:checked="${selectedAlcohol == 'over_10'}" onchange='this.form.submit();' /> 10% ~ 20%
+    <input type='radio' name='abv' value='over_20'
+           th:checked="${selectedAlcohol == 'over_20'}" onchange='this.form.submit();' /> 20% ~ 30%
+    <input type='radio' name='abv' value='over_30'
+           th:checked="${selectedAlcohol == 'over_30'}" onchange='this.form.submit();' /> 30% ~ 40%
+    <input type='radio' name='abv' value='over_40'
+           th:checked="${selectedAlcohol == 'over_40'}" onchange='this.form.submit();' /> 40% 이상
+    <input type='radio' name='abv' value=''
+           th:checked="${selectedAlcohol == ''}" onchange='this.form.submit();' /> 전체
+    <br>
+    <br>
+    나이대<br>
+    <input type='radio' name='ageGroup' value='over_age_20'
+           th:checked="${selectedageGroup == 'over_age_20'}" onchange='this.form.submit();' /> 20대
+    <input type='radio' name='ageGroup' value='over_age_30'
+           th:checked="${selectedageGroup == 'over_age_30'}" onchange='this.form.submit();' /> 30대
+    <input type='radio' name='ageGroup' value='over_age_40'
+           th:checked="${selectedageGroup == 'over_age_40'}" onchange='this.form.submit();' /> 40대
+    <input type='radio' name='ageGroup' value='over_age_50'
+           th:checked="${selectedageGroup == 'over_age_50'}" onchange='this.form.submit();' /> 50대
+    <input type='radio' name='ageGroup' value='over_age_60'
+           th:checked="${selectedageGroup == 'over_age_60'}" onchange='this.form.submit();' /> 60대 이상
+    <input type='radio' name='ageGroup' value=''
+           th:checked="${selectedageGroup == ''}" onchange='this.form.submit();' /> 전체
     <br>
 
 </form>

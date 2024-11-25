@@ -41,36 +41,17 @@ public class MainController {
     }
 
     @GetMapping("/filter")
-    public String filter(@RequestParam(value = "price", required = false) String price, Model model) {
-        List<CocktailDTO> searchResults;
+    public String filter(@RequestParam(value = "price", required = false) String price,
+                         @RequestParam(value = "abv", required = false) String abv,
+                         @RequestParam(value = "ageGroup", required = false) String ageGroup,
+                         Model model) {
+        List<CocktailDTO> cocktails = cocktailService.filterBySelect(price, abv, ageGroup);
 
-        if (price != null) {
-            switch (price) {
-                case "under_10000":
-                    searchResults = cocktailService.findByPriceLessThanEqual(10000);
-                    break;
-                case "over_10000":
-                    searchResults = cocktailService.findByPriceGreaterThanEqualAndLessThan(10000, 20000);
-                    break;
-                case "over_20000":
-                    searchResults = cocktailService.findByPriceGreaterThanEqualAndLessThan(20000, 30000);
-                    break;
-                case "over_30000":
-                    searchResults = cocktailService.findByPriceGreaterThanEqualAndLessThan(30000, 40000);
-                    break;
-                case "over_40000":
-                    searchResults = cocktailService.findByPriceGreaterThanEqual(40000);
-                    break;
-                default:
-                    searchResults = cocktailService.findAll();  // 기본적으로 모든 데이터 반환
-                    break;
-            }
-        } else {
-            searchResults = cocktailService.findAll();
-        }
-
-        model.addAttribute("cocktails", searchResults);
+        model.addAttribute("cocktails", cocktails);
         model.addAttribute("selectedPrice", price);
+        model.addAttribute("selectedAlcohol", abv);
+        model.addAttribute("selectedageGroup", ageGroup);
+
         return "list";
     }
 
