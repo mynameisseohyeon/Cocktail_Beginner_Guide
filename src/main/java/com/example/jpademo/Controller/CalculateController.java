@@ -29,8 +29,8 @@ public class CalculateController {
 
     @RequestMapping("/recommend")
     public String recommendCocktails(
-            @RequestParam("soojuQuantity") int soojuQuantity,
-            @RequestParam("state") int state,
+            @RequestParam("drinkCapacity") int soojuQuantity,
+            @RequestParam("numOfDrink") int state,
             Model model) {
 
         // 추천 로직 호출

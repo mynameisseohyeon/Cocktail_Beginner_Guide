@@ -34,17 +34,12 @@ public class MainController {
     }
 
     @GetMapping("/search")
-<<<<<<< HEAD
     public String search(String keyword, Model model) { // 칵테일 검색
-=======
-    public String search(String keyword, Model model) { // 칵테일명을 통한 검색
->>>>>>> a164301 ([FEAT] : user entity add)
         List<CocktailDTO> searchResults = cocktailService.findByKeyword(keyword);
         model.addAttribute("cocktails", searchResults);
         return "list";
     }
 
-<<<<<<< HEAD
     @GetMapping("/filter")
     public String filter(@RequestParam(value = "price", required = false) String price,
                          @RequestParam(value = "abv", required = false) String abv,
@@ -66,10 +61,8 @@ public class MainController {
         return "today";
     }
 
-=======
->>>>>>> a164301 ([FEAT] : user entity add)
     @RequestMapping("/addform")
-    public String addform()  { 
+    public String addform()  {
         return "addform";
     }
 
@@ -80,13 +73,9 @@ public class MainController {
     }
 
     @RequestMapping("/{idx}")
-<<<<<<< HEAD
     public String read(@PathVariable long idx,
                        @RequestParam(value = "button_text", required = false) String buttonText,
                        Model model) {
-=======
-    public String read(@PathVariable long idx, Model model) { // 칵테일 idx를 통한 내용 상세 조회
->>>>>>> a164301 ([FEAT] : user entity add)
         model.addAttribute("cocktail", cocktailService.findById(idx));
         if (buttonText != null) {
             model.addAttribute("buttonText", buttonText);
@@ -95,11 +84,7 @@ public class MainController {
     }
 
     @RequestMapping("/delete/{idx}")
-<<<<<<< HEAD
     public String delete(@PathVariable long idx)  { // idx에 해당하는 칵테일 삭제
-=======
-    public String delete(@PathVariable long idx)  { // 칵테일 삭제
->>>>>>> a164301 ([FEAT] : user entity add)
         cocktailService.deleteById(idx);
         return "redirect:/cocktail/";
     }
@@ -113,7 +98,7 @@ public class MainController {
     }
 
     @RequestMapping("/update")
-    public String update(@ModelAttribute CocktailDTO cocktail)  { // 칵테일 내용 수정
+    public String update(@ModelAttribute CocktailDTO cocktail)  {
         cocktailService.save(cocktail);
         return "redirect:/cocktail/";
 

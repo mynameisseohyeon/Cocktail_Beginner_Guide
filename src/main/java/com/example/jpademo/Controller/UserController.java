@@ -1,6 +1,5 @@
 package com.example.jpademo.Controller;
 
-<<<<<<< HEAD
 import com.example.jpademo.Service.UserService;
 import com.example.jpademo.Entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,22 +30,10 @@ public class UserController {
     }
 
     @GetMapping("/signup")
-=======
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-@Controller
-@RequestMapping("/user")
-public class UserController {
-
-    @PostMapping("/signup")
->>>>>>> a164301 ([FEAT] : user entity add)
     public String signup() { // 회원가입
         return "signup";
     }
 
-<<<<<<< HEAD
     @RequestMapping("/signup")
     public String signup(@ModelAttribute User user, Model model) {
         User registeredUser = userService.registerUser(user); // 회원가입 처리
@@ -56,16 +43,4 @@ public class UserController {
         }
         return "redirect:/login"; // 회원가입 성공 후 로그인 페이지로 리다이렉트
     }
-=======
-    @PostMapping("/signin")
-    public String signin() { // 로그인
-        return "signin";
-    }
-
-    @PostMapping("{idx}/mypage")
-    public String mypage() { // 사용자 페이지
-        return "mypage";
-    }
-
->>>>>>> a164301 ([FEAT] : user entity add)
 }

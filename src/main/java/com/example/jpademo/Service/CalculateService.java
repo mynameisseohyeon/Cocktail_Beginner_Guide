@@ -17,15 +17,16 @@ public class CalculateService {
     private final CocktailRepository cocktailRepository;
     private final CalculateRepository calculateRepository;
 
-    public List<Cocktail> recommendCocktails(int drinkCapacity, int state) {
+    public List<Cocktail> recommendCocktails(int drinkCapacity, int numOfDrink) {
+        System.out.println("주량 계산 시스템");
         // 소주 1잔 기준 알코올 소비량 (80ml * 0.16)
         double sojuAlcoholContent = drinkCapacity * 80 * 0.16;
 
         // 칵테일 리스트 가져오기
         List<Cocktail> allCocktails = cocktailRepository.findAll();
 
-        // 상태에 따라 추천 전략 변경
-        double stateMultiplier = switch (state) {
+        // 상태에 따른 주량 계산
+        double stateMultiplier = switch (numOfDrink) {
             case 1 -> 0.5; // 몸 사릴래: 50% 주량만 사용
             case 2 -> 1.0; // 자중: 정상 주량
             case 3 -> 1.5; // 꽐라: 150% 주량까지 허용
@@ -45,7 +46,7 @@ public class CalculateService {
         // 추천된 칵테일 저장
         Calculate calculate = Calculate.builder()
                 .drinkCapacity(drinkCapacity)
-                .state(state)
+                .numOfDrink(numOfDrink)
                 .recommendedCocktails(recommendedCocktails)
                 .build();
 

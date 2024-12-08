@@ -20,7 +20,6 @@ public class User { // 해당 user 엔터티에서는 도수 계산 시 사용�
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
 
-<<<<<<< HEAD
     // eamil
     @Column
     private String email;
@@ -36,31 +35,11 @@ public class User { // 해당 user 엔터티에서는 도수 계산 시 사용�
     // 나이
     @Column
     private int age;
-    
+
     // 칵테일 리스트
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "cocktail_idx")
     @JsonIgnore
     private List<Cocktail> cocktailList;
 
-=======
-    // 사용자의 닉네임
-    @Column(nullable = false, unique = true)
-    private String nickName;
-
-    // 사용자의 pw
-    @Column(nullable = false)
-    private String pw;
-
-    // 사용자의 연령
-    private String userAge;
-
-    // 최대 수용 가능한 도수 (주량 계산 기능과 연결됨)
-    private String maxAbv;
-
-    // 즐겨찾기 (선호하는 칵테일을 즐겨찾기 - cocktail 테이블과의 join)
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cocktail_name") // 칵테일 이름을 join
-    private Cocktail cocktail;
->>>>>>> a164301 ([FEAT] : user entity add)
 }
