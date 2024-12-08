@@ -1,5 +1,6 @@
 package com.example.jpademo.Controller;
 
+import com.example.jpademo.Entity.Cocktail;
 import com.example.jpademo.Entity.CocktailDTO;
 import com.example.jpademo.Service.CocktailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -67,19 +69,28 @@ public class MainController {
     }
 
     @RequestMapping("/add")
-    public String add(@ModelAttribute CocktailDTO cocktail)  { // 칵테일 추가
+    public String add(@ModelAttribute CocktailDTO cocktail) {
+        if (cocktail.getIngredients() == null) {
+            cocktail.setIngredients(new ArrayList<>());
+        }
         cocktailService.save(cocktail);
         return "redirect:/cocktail/";
     }
+
 
     @RequestMapping("/{idx}")
     public String read(@PathVariable long idx,
                        @RequestParam(value = "button_text", required = false) String buttonText,
                        Model model) {
-        model.addAttribute("cocktail", cocktailService.findById(idx));
+
+        CocktailDTO cocktail = cocktailService.findById(idx);
+        model.addAttribute("cocktail", cocktail);
+
         if (buttonText != null) {
             model.addAttribute("buttonText", buttonText);
         }
+
+        System.out.println(cocktail);
         return "read";
     }
 
@@ -99,6 +110,9 @@ public class MainController {
 
     @RequestMapping("/update")
     public String update(@ModelAttribute CocktailDTO cocktail)  {
+        if (cocktail.getIngredients() == null) {
+            cocktail.setIngredients(new ArrayList<>());
+        }
         cocktailService.save(cocktail);
         return "redirect:/cocktail/";
 

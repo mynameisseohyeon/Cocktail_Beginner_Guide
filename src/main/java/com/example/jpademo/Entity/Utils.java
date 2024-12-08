@@ -1,34 +1,43 @@
 package com.example.jpademo.Entity;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Utils {
     public static  CocktailDTO toDTO(Cocktail entity) {
-        return CocktailDTO.builder()
-                .idx(entity.getIdx())
-                .name(entity.getName())
-                .abv(entity.getAbv())
-                .taste(entity.getTaste())
-                .ageGroup(entity.getAgeGroup())
-                .snacks(entity.getSnacks())
-                .priceRange(entity.getPriceRange())
-                .cocktailInfo(entity.getCocktailInfo())
-                .image(entity.getImage())
-                .base(entity.getBase())
-//                .ingredients(entity.getIngredients().stream()
-//                        .map(Utils::toIngredientDTO)
-//                        .toList())
-                .build();
-    }
+        List<IngredientDTO> ingredientDTOS = entity.getIngredients().stream()
+                .map(ingredient -> new IngredientDTO(
+                        ingredient.getIngIdx(),
+                        ingredient.getName(),
+                        ingredient.getBaseInfo(),
+                        ingredient.getImage()
+                ))
+                .collect(Collectors.toList());
+        System.out.println(entity.getIngredients());
 
-    private static IngredientDTO toIngredientDTO(Ingredient entity) {
-        return IngredientDTO.builder()
-                .ingIdx(entity.getIngIdx())
-                .name(entity.getName())
-                .baseInfo(entity.getBaseInfo())
-                .image(entity.getImage())
-                .build();
+        return new CocktailDTO(
+                entity.getIdx(),
+                entity.getName(),
+                entity.getAbv(),
+                entity.getTaste(),
+                entity.getAgeGroup(),
+                entity.getSnacks(),
+                entity.getPriceRange(),
+                entity.getCocktailInfo(),
+                entity.getImage(),
+                ingredientDTOS
+        );
     }
 
     public static Cocktail toEntity(CocktailDTO dto) {
+        List<Ingredient> ingredients = dto.getIngredients().stream()
+                .map(ingredientDTO -> new Ingredient(
+                        ingredientDTO.getIngIdx(),
+                        ingredientDTO.getName(),
+                        ingredientDTO.getBaseInfo(),
+                        ingredientDTO.getImage()
+                ))
+                .collect(Collectors.toList());
         return Cocktail.builder()
                 .idx(dto.getIdx())
                 .name(dto.getName())
@@ -38,20 +47,6 @@ public class Utils {
                 .snacks(dto.getSnacks())
                 .priceRange(dto.getPriceRange())
                 .cocktailInfo(dto.getCocktailInfo())
-                .image(dto.getImage())
-                .base(dto.getBase())
-
-//                .Ingredients(dto.getIngredients().stream()
-//                        .map(Utils::toIngredientEntity)
-//                        .toList())
-                .build();
-    }
-
-    private static Ingredient toIngredientEntity(IngredientDTO dto) {
-        return Ingredient.builder()
-                .ingIdx(dto.getIngIdx())
-                .name(dto.getName())
-                .baseInfo(dto.getBaseInfo())
                 .image(dto.getImage())
                 .build();
     }
