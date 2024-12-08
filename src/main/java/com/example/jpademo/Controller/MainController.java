@@ -1,5 +1,6 @@
 package com.example.jpademo.Controller;
 
+import com.example.jpademo.Entity.Cocktail;
 import com.example.jpademo.Entity.CocktailDTO;
 import com.example.jpademo.Service.CocktailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,11 +77,15 @@ public class MainController {
     public String read(@PathVariable long idx,
                        @RequestParam(value = "button_text", required = false) String buttonText,
                        Model model) {
-        model.addAttribute("cocktail", cocktailService.findById(idx));
+
+        CocktailDTO cocktail = cocktailService.findById(idx);
+        model.addAttribute("cocktail", cocktail);
 
         if (buttonText != null) {
             model.addAttribute("buttonText", buttonText);
         }
+
+        System.out.println(cocktail);
         return "read";
     }
 

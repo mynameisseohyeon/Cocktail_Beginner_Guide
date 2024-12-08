@@ -2,6 +2,8 @@ package com.example.jpademo.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -26,8 +28,8 @@ public class Cocktail {
     private int priceRange; // 가격
     private String cocktailInfo; // 정보
     private String image; // 이미지
-    private String base; // 이미지
 
-//    @OneToMany(mappedBy = "cocktail", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<Ingredient> Ingredients;
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ingIdx")
+    private List<Ingredient> ingredients = new ArrayList<>();
 }

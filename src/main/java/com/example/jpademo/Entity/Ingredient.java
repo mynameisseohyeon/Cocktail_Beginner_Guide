@@ -21,8 +21,4 @@ public class Ingredient {
     private String baseInfo; // 정보
     private String image; // 이미지
 
-//    @ManyToOne
-//    @JoinColumn(name = "idx")
-//    private Cocktail cocktail;
-
 }
