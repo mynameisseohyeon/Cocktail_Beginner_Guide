@@ -55,6 +55,12 @@ public class MainController {
         return "list";
     }
 
+    @GetMapping("/today")
+    public String today(Model model) {
+        model.addAttribute("cocktails", cocktailService.findAll());
+        return "today";
+    }
+
     @RequestMapping("/addform")
     public String addform()  {
         return "addform";
@@ -67,8 +73,14 @@ public class MainController {
     }
 
     @RequestMapping("/{idx}")
-    public String read(@PathVariable long idx, Model model) {
+    public String read(@PathVariable long idx,
+                       @RequestParam(value = "button_text", required = false) String buttonText,
+                       Model model) {
         model.addAttribute("cocktail", cocktailService.findById(idx));
+
+        if (buttonText != null) {
+            model.addAttribute("buttonText", buttonText);
+        }
         return "read";
     }
 
