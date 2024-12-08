@@ -6,6 +6,8 @@ import java.util.List;
 
 import java.util.List;
 
+import java.util.List;
+
 @Entity
 @Table(name = "cocktail")
 @Builder
@@ -20,18 +22,25 @@ public class Cocktail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
 
+<<<<<<< HEAD
     @Column(nullable = false)
     private String name; // 칵테일 이름
 
     @Column(nullable = false)
     private int abv; // 도수
 
+=======
+
+    private String name; // 칵테일 이름 (User 테이블에서 해당 속성명을 통해 join)
+    private String abv; // 도수
+>>>>>>> a164301 ([FEAT] : user entity add)
     private String taste; // 칵테일 맛
     private int ageGroup; // 연령대
     private String snacks; // 안주
     private int priceRange; // 가격
     private String cocktailInfo; // 정보
     private String image; // 이미지
+<<<<<<< HEAD
     private String base; // 이미지
 
     @Column(nullable = false)
@@ -48,4 +57,10 @@ public class Cocktail {
 
 //    @OneToMany(mappedBy = "cocktail", cascade = CascadeType.ALL, orphanRemoval = true)
 //    private List<Ingredient> Ingredients;
+=======
+
+    // 즐겨찾기 (선호하는 칵테일을 즐겨찾기 - user 테이블과의 join)
+    @OneToMany(mappedBy = "cocktail", fetch = FetchType.LAZY)
+    private List<User> users;
+>>>>>>> a164301 ([FEAT] : user entity add)
 }
