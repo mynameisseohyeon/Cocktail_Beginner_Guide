@@ -5,10 +5,7 @@ import com.example.jpademo.Entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class UserController {
@@ -17,11 +14,11 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/login")
-    public String login() {
+    public String login() { // 로그인
         return "login";
     }
 
-    @PostMapping("/login")
+    @RequestMapping("/login")
     public String login(@RequestParam String email, @RequestParam String password, Model model) {
         User user = userService.loginUser(email, password); // 로그인 처리
         if (user == null) { // 로그인 실패
@@ -33,11 +30,11 @@ public class UserController {
     }
 
     @GetMapping("/signup")
-    public String signup() {
+    public String signup() { // 회원가입
         return "signup";
     }
 
-    @PostMapping("/signup")
+    @RequestMapping("/signup")
     public String signup(@ModelAttribute User user, Model model) {
         User registeredUser = userService.registerUser(user); // 회원가입 처리
         if (registeredUser == null) {

@@ -21,4 +21,6 @@ public class CocktailDTO {
     private int priceRange; // 가격
     private String cocktailInfo; // 정보
     private String image; // 이미지
+    private Long cocktailIdx;
+
 }

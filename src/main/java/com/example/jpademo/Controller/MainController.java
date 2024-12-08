@@ -34,7 +34,7 @@ public class MainController {
     }
 
     @GetMapping("/search")
-    public String search(String keyword, Model model) {
+    public String search(String keyword, Model model) { // 칵테일 검색
         List<CocktailDTO> searchResults = cocktailService.findByKeyword(keyword);
         model.addAttribute("cocktails", searchResults);
         return "list";
@@ -56,31 +56,31 @@ public class MainController {
     }
 
     @RequestMapping("/addform")
-    public String addform()  {
+    public String addform()  { 
         return "addform";
     }
 
     @RequestMapping("/add")
-    public String add(@ModelAttribute CocktailDTO cocktail)  {
+    public String add(@ModelAttribute CocktailDTO cocktail)  { // 칵테일 추가
         cocktailService.save(cocktail);
         return "redirect:/cocktail/";
     }
 
     @RequestMapping("/{idx}")
-    public String read(@PathVariable long idx, Model model) {
+    public String read(@PathVariable long idx, Model model) { // 칵테일 상세 조회
         model.addAttribute("cocktail", cocktailService.findById(idx));
         return "read";
     }
 
     @RequestMapping("/delete/{idx}")
-    public String delete(@PathVariable long idx)  {
+    public String delete(@PathVariable long idx)  { // idx에 해당하는 칵테일 삭제
         cocktailService.deleteById(idx);
         return "redirect:/cocktail/";
     }
 
 
     @RequestMapping("/updateform/{idx}")
-    public String updatecocktail(@PathVariable Long idx, Model model) {
+    public String updatecocktail(@PathVariable Long idx, Model model) { // idx에 해당하는 칵테일 수정
         CocktailDTO cocktail = cocktailService.findById(idx);
         model.addAttribute("cocktails", cocktail);
         return "updateform";
@@ -92,4 +92,5 @@ public class MainController {
         return "redirect:/cocktail/";
 
     }
+
 }
