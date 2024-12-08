@@ -10,7 +10,8 @@
 
 칵테일 상세 설명 <br/>
 칵테일명 : [[${cocktail.name}]] <br/>
-베이스 : [[${cocktail.ingredients[0].name}]] <br/>
+베이스 <br/>
+<li th:each="ingredient : ${cocktail.ingredients}" th:text="${ingredient.name}"></li>
 <img th:src="${cocktail.image}" /> <br/>
 
 <text rows="5" cols="40" th:text="${cocktail.cocktailInfo}">

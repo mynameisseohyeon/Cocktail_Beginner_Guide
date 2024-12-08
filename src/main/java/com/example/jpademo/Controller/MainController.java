@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -68,10 +69,14 @@ public class MainController {
     }
 
     @RequestMapping("/add")
-    public String add(@ModelAttribute CocktailDTO cocktail)  {
+    public String add(@ModelAttribute CocktailDTO cocktail) {
+        if (cocktail.getIngredients() == null) {
+            cocktail.setIngredients(new ArrayList<>());
+        }
         cocktailService.save(cocktail);
         return "redirect:/cocktail/";
     }
+
 
     @RequestMapping("/{idx}")
     public String read(@PathVariable long idx,
@@ -105,6 +110,9 @@ public class MainController {
 
     @RequestMapping("/update")
     public String update(@ModelAttribute CocktailDTO cocktail)  {
+        if (cocktail.getIngredients() == null) {
+            cocktail.setIngredients(new ArrayList<>());
+        }
         cocktailService.save(cocktail);
         return "redirect:/cocktail/";
 

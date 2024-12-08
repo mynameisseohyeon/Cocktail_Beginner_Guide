@@ -13,6 +13,8 @@ public class Utils {
                         ingredient.getImage()
                 ))
                 .collect(Collectors.toList());
+        System.out.println(entity.getIngredients());
+
         return new CocktailDTO(
                 entity.getIdx(),
                 entity.getName(),
