@@ -64,7 +64,7 @@ public class MainController {
     }
 
     @RequestMapping("/addform")
-    public String addform()  { 
+    public String addform()  {
         return "addform";
     }
 

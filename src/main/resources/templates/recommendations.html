@@ -2,17 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>추천된 칵테일</title>
+    <title>칵테일 조합 생성</title>
 </head>
 <body>
-<h1>오늘 추천하는 칵테일</h1>
+    <h1>생성된 칵테일 조합!</h1>
 
-<ul>
-    <li th:each="cocktail : ${recommendedCocktails}">
-        <h2 th:text="${cocktail.name}"></h2>
-        <p>도수: <span th:text="${cocktail.abv}"></span>%</p>
-        <p th:text="${cocktail.cocktailInfo}"></p>
-    </li>
-</ul>
+    <ul>
+        <li th:each="cocktail : ${recommendedCocktails}">
+            <img th:src="${cocktail.image}" width="100" height="100" />
+            <h2 th:text="${cocktail.name}"></h2>
+            <p>도수: <span th:text="${cocktail.abv}"></span>%</p>
+            <p th:text="${cocktail.cocktailInfo}"></p>
+        </li>
+    </ul>
+
+    <a href="/calculate">다시 계산하기</a>
+    <a href="/cocktail">메인 화면으로 이동</a>
 </body>
 </html>

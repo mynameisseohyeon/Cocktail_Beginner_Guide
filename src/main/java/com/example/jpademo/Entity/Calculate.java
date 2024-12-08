@@ -15,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Calculate {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,7 +25,6 @@ public class Calculate {
 
     // 선택한 칵테일 (유저가 포함시키고 싶어 하는 칵테일)
     @ManyToMany
-    @JoinTable(name = "selected_cocktails")
     private List<Cocktail> selectedCocktails;
 
     // 몇 잔을 마실 것인지
@@ -35,6 +35,5 @@ public class Calculate {
 
     // 결과 : 추천된 칵테일 리스트
     @ManyToMany
-    @JoinTable(name = "recommended_cocktails")
     private List<Cocktail> recommendedCocktails;
 }

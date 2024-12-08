@@ -52,4 +52,12 @@ public class Cocktail {
 
     @ManyToMany(mappedBy = "recommendedCocktails")
     private List<Calculate> calculatesWithRecommendation;
+
+//    @OneToMany(mappedBy = "cocktail", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<Ingredient> Ingredients;
+
+    // 즐겨찾기 (선호하는 칵테일을 즐겨찾기 - user 테이블과의 join)
+//    @OneToMany(mappedBy = "cocktail", fetch = FetchType.LAZY)
+//    private List<User> users;
 }
+

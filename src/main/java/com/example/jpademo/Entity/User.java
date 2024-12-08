@@ -35,7 +35,7 @@ public class User { // 해당 user 엔터티에서는 도수 계산 시 사용�
     // 나이
     @Column
     private int age;
-    
+
     // 칵테일 리스트
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "cocktail_idx")
