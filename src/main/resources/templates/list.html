@@ -8,7 +8,14 @@
 
 <h1>칵테일 초보를 위한 칵테일 추천!</h1>
 <button onclick="location.href='/login'">
+    <br>
     <img src="/img/user.png" width="16" height="16"/>
+    <H6>로그인</H6>
+</button>
+<button onclick="location.href='/cocktail/today'">
+    <br>
+    <img src="/img/star.png" width="16" height="16"/>
+    <H6>오늘의 술</H6>
 </button>
 
 <form action="/cocktail/filter" method="get">
@@ -67,6 +74,7 @@
 </form>
 
 <table>
+    <p th:if="${buttonText != null}" th:text="'추천 이유: ' + ${buttonText}"></p>
     <tr th:each="cocktail, iterStat : ${cocktails}">
         <td>
             <div>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>오늘의 술!</title>
+</head>
+<body>
+    <h1>오늘의 술!</h1>
+    <h4>오늘 어떤 칵테일을 마실지 못정했다면,
+    <br>랜덤 질문을 통해 오늘 당신과 딱 맞는 술을 추천받아보세요</br>
+    </h4>
+
+    <h3>Q. 오늘 당신이 여행을 떠난다면 어디로 가고 싶은가요?</h3>
+    <div>
+    <form action="/cocktail/2" method="get"  style="display: inline;">
+        <button type="submit" name="button_text" value="파랗고 초록빛이 도는 시원한 바다">
+          <br>
+          <img src="/img/today1.jpg" width="300" height="300"/>
+          <H6>파랗고 초록빛이 도는 시원한 바다</H6>
+        </button>
+    </form>
+    <form action="/cocktail/3" method="get"  style="display: inline;">
+        <button type="submit" name="button_text" value="노을이 인상적인 바다 앞 해변">
+        <br>
+            <img src="/img/today2.jpg" width="300" height="300"/>
+            <H6>노을이 인상적인 바다 앞 해변</H6>
+        </button>
+    </form>
+    <form action="/cocktail/1" method="get"  style="display: inline;">
+        <button type="submit" name="button_text" value="초록 들판 위에 작은 꽃들이 만개한 자연">
+        <br>
+            <img src="/img/today3.jpg" width="300" height="300"/>
+            <H6>초록 들판 위에 작은 꽃들이 만개한 자연</H6>
+        </button>
+    </form>
+    <form action="/cocktail/4" method="get"  style="display: inline;">
+        <button type="submit" name="button_text" value="야자수 뒤로 투명한 바다가 펼쳐진 동남아">
+        <br>
+            <img src="/img/today4.jpg" width="300" height="300"/>
+            <H6>야자수 뒤로 투명한 바다가 펼쳐진 동남아</H6>
+        </button>
+    </form>
+    </div>
+</body>
+</html>
