@@ -25,7 +25,9 @@ public class Utils {
                 entity.getPriceRange(),
                 entity.getCocktailInfo(),
                 entity.getImage(),
-                ingredientDTOS
+                ingredientDTOS,
+                entity.getCocktailIdx(),
+                entity.getBase()
         );
     }
 

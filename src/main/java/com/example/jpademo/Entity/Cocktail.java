@@ -34,6 +34,7 @@ public class Cocktail {
     private int priceRange; // 가격
     private String cocktailInfo; // 정보
     private String image; // 이미지
+    private String base;
 
 
     @OneToMany(fetch = FetchType.EAGER)
