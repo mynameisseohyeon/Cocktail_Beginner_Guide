@@ -5,7 +5,7 @@
     <title>칵테일 주량 계산기</title>
 </head>
 <body>
-<h1>주량 계산을 통한 칵테일 추천</h1>
+<h1>주량 계산을 통한 칵테일 조합 생성!</h1>
 
 <form action="/calculate/recommend" method="post">
     <!-- 오늘 상태 선택 -->
@@ -22,10 +22,22 @@
 
     <br><br>
 
-    <!--반드시 포함시킬 칵테일 선택-->
+    <!-- 사용자가 포함하고 싶은 칵테일 선택 -->
+    <p>조합에 꼭 포함시키고 싶은 칵테일 선택! (최대 3개):</p>
+    <div>
+        <ul>
+            <li th:each="cocktail : ${cocktails}">
+                <label>
+                    <img th:src="${cocktail.image}" alt="칵테일 이미지" style="width: 100px; height: 100px;">
+                    <input type="checkbox" name="selectedCocktails" th:value="${cocktail.idx}" th:id="${'cocktail_' + cocktail.idx}">
+                    <span th:text="${cocktail.name}"></span>
+                </label>
+            </li>
+        </ul>
+    </div>
 
     <!-- 소주 주량 입력 -->
-    <label for="drinkCapacity">주량 (소주 기준 "잔"):</label>
+    <label for="drinkCapacity">주량 (소주 1잔 기준으로 입력: 5잔/1병):</label>
     <input type="number" id="drinkCapacity" name="drinkCapacity" min="1" required>
 
     <br><br>

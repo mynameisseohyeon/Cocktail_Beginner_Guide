@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>추천된 칵테일</title>
+    <title>칵테일 조합 생성</title>
 </head>
 <body>
-    <h1>칵테일 추천 리스트</h1>
+    <h1>생성된 칵테일 조합!</h1>
 
     <ul>
         <li th:each="cocktail : ${recommendedCocktails}">
@@ -17,5 +17,6 @@
     </ul>
 
     <a href="/calculate">다시 계산하기</a>
+    <a href="/cocktail">메인 화면으로 이동</a>
 </body>
 </html>
