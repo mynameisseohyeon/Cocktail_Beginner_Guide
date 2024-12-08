@@ -2,6 +2,7 @@ package com.example.jpademo.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import java.util.List;
 
 import java.util.List;
 
@@ -31,6 +32,7 @@ public class Cocktail {
     private int priceRange; // 가격
     private String cocktailInfo; // 정보
     private String image; // 이미지
+    private String base; // 이미지
 
     @Column(nullable = false)
     private int volume; // 칵테일 ml
@@ -43,4 +45,7 @@ public class Cocktail {
 
     @ManyToMany(mappedBy = "recommendedCocktails")
     private List<Calculate> calculatesWithRecommendation;
+
+//    @OneToMany(mappedBy = "cocktail", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<Ingredient> Ingredients;
 }
