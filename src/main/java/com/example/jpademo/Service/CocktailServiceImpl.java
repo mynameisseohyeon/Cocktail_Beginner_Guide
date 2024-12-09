@@ -119,12 +119,12 @@ public class CocktailServiceImpl implements CocktailService{
                     break;
                 case "over_20":
                     cocktails = cocktails.stream()
-                            .filter(c -> c.getAbv() >= 20)
+                            .filter(c -> c.getAbv() >= 20 && c.getAbv() < 30)
                             .collect(Collectors.toList());
                     break;
                 case "over_30":
                     cocktails = cocktails.stream()
-                            .filter(c -> c.getAbv() >= 30)
+                            .filter(c -> c.getAbv() >= 30 && c.getAbv() < 40)
                             .collect(Collectors.toList());
                     break;
                 case "over_40":
@@ -139,27 +139,27 @@ public class CocktailServiceImpl implements CocktailService{
             switch (ageGroup) {
                 case "over_age_20":
                     cocktails = cocktails.stream()
-                            .filter(c -> c.getAgeGroup() == 20)
+                            .filter(c -> c.getAgeGroup() >= 20 && c.getAgeGroup() < 30)
                             .collect(Collectors.toList());
                     break;
                 case "over_age_30":
                     cocktails = cocktails.stream()
-                            .filter(c -> c.getAgeGroup() == 30)
+                            .filter(c -> c.getAgeGroup() >= 30 && c.getAgeGroup() < 40)
                             .collect(Collectors.toList());
                     break;
                 case "over_age_40":
                     cocktails = cocktails.stream()
-                            .filter(c -> c.getAgeGroup() == 40)
+                            .filter(c -> c.getAgeGroup() >= 40 && c.getAgeGroup() < 50)
                             .collect(Collectors.toList());
                     break;
                 case "over_age_50":
                     cocktails = cocktails.stream()
-                            .filter(c -> c.getAgeGroup() == 50)
+                            .filter(c -> c.getAgeGroup() >= 50 && c.getAgeGroup() < 60)
                             .collect(Collectors.toList());
                     break;
                 case "over_age_60":
                     cocktails = cocktails.stream()
-                            .filter(c -> c.getAgeGroup() == 60)
+                            .filter(c -> c.getAgeGroup() >= 60 && c.getAgeGroup() < 70)
                             .collect(Collectors.toList());
                     break;
             }
