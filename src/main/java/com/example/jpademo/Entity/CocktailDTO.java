@@ -24,6 +24,5 @@ public class CocktailDTO {
     private String image; // 이미지
     private List<IngredientDTO> ingredients;
     private Long cocktailIdx;
-    private String base; // 이미지
 
 }

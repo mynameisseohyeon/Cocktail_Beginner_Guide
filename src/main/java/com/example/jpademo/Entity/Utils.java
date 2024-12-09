@@ -26,8 +26,7 @@ public class Utils {
                 entity.getCocktailInfo(),
                 entity.getImage(),
                 ingredientDTOS,
-                entity.getCocktailIdx(),
-                entity.getBase()
+                entity.getCocktailIdx()
         );
     }
 
