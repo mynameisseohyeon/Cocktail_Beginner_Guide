@@ -1,20 +1,43 @@
 package com.example.jpademo.Entity;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Utils {
     public static  CocktailDTO toDTO(Cocktail entity) {
-        return CocktailDTO.builder()
-                .idx(entity.getIdx())
-                .name(entity.getName())
-                .abv(entity.getAbv())
-                .taste(entity.getTaste())
-                .ageGroup(entity.getAgeGroup())
-                .snacks(entity.getSnacks())
-                .priceRange(entity.getPriceRange())
-                .cocktailInfo(entity.getCocktailInfo())
-                .image(entity.getImage())
-                .build();
+        List<IngredientDTO> ingredientDTOS = entity.getIngredients().stream()
+                .map(ingredient -> new IngredientDTO(
+                        ingredient.getIngIdx(),
+                        ingredient.getName(),
+                        ingredient.getBaseInfo(),
+                        ingredient.getImage()
+                ))
+                .collect(Collectors.toList());
+        System.out.println(entity.getIngredients());
+
+        return new CocktailDTO(
+                entity.getIdx(),
+                entity.getName(),
+                entity.getAbv(),
+                entity.getTaste(),
+                entity.getAgeGroup(),
+                entity.getSnacks(),
+                entity.getPriceRange(),
+                entity.getCocktailInfo(),
+                entity.getImage(),
+                ingredientDTOS
+        );
     }
+
     public static Cocktail toEntity(CocktailDTO dto) {
+        List<Ingredient> ingredients = dto.getIngredients().stream()
+                .map(ingredientDTO -> new Ingredient(
+                        ingredientDTO.getIngIdx(),
+                        ingredientDTO.getName(),
+                        ingredientDTO.getBaseInfo(),
+                        ingredientDTO.getImage()
+                ))
+                .collect(Collectors.toList());
         return Cocktail.builder()
                 .idx(dto.getIdx())
                 .name(dto.getName())

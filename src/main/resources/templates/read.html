@@ -6,9 +6,12 @@
 </head>
 <body>
 
+<h2 th:if="${buttonText != null}" th:text="'오늘은 ' + ${buttonText} + '가 떠오르는 ' + ${cocktail.name} + '!'"></h2>
 
 칵테일 상세 설명 <br/>
 칵테일명 : [[${cocktail.name}]] <br/>
+베이스 <br/>
+<li th:each="ingredient : ${cocktail.ingredients}" th:text="${ingredient.name}"></li>
 <img th:src="${cocktail.image}" /> <br/>
 
 <text rows="5" cols="40" th:text="${cocktail.cocktailInfo}">
@@ -17,7 +20,10 @@
 
 <a th:href="@{/cocktail/delete/{idx}(idx=${cocktail.idx})}">[삭제]</a>
 <a th:href="@{/cocktail/updateform/{idx}(idx=${cocktail.idx})}">[수정]</a>
-
+<br></br>
+<div>
+    <a th:href="@{/cocktail/}">[메인화면]</a>
+</div>
 
 </body>
 </html>

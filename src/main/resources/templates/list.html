@@ -7,6 +7,72 @@
 <body>
 
 <h1>칵테일 초보를 위한 칵테일 추천!</h1>
+<button onclick="location.href='/login'">
+    <br>
+    <img src="/img/user.png" width="16" height="16"/>
+    <H6>로그인</H6>
+</button>
+<button onclick="location.href='/cocktail/today'">
+    <br>
+    <img src="/img/star.png" width="16" height="16"/>
+    <H6>오늘의 술</H6>
+</button>
+<button onclick="location.href='/calculate'">주량에 따른 칵테일 추천 시스템</button>
+
+<form action="/cocktail/filter" method="get">
+    <h2>조건 검색</h2>
+    한잔당 가격대<br>
+    <input type="radio" name="price" value="under_10000"
+           th:checked="${selectedPrice == 'under_10000'}" onchange='this.form.submit();' /> 10,000₩ 이하
+    <input type='radio' name='price' value='over_10000'
+           th:checked="${selectedPrice == 'over_10000'}" onchange='this.form.submit();' /> 10,000원 ~ 20,000원
+    <input type='radio' name='price' value='over_20000'
+           th:checked="${selectedPrice == 'over_20000'}" onchange='this.form.submit();' /> 20,000원 ~ 30,000원
+    <input type='radio' name='price' value='over_30000'
+           th:checked="${selectedPrice == 'over_30000'}" onchange='this.form.submit();' /> 30,000원 ~ 40,000원
+    <input type='radio' name='price' value='over_40000'
+           th:checked="${selectedPrice == 'over_40000'}" onchange='this.form.submit();' /> 40,000원 이상
+    <input type='radio' name='price' value=''
+           th:checked="${selectedPrice == ''}" onchange='this.form.submit();' /> 전체
+    <br>
+    <br>
+    도수<br>
+    <input type='radio' name='abv' value='under_10'
+           th:checked="${selectedAlcohol == 'under_10'}" onchange='this.form.submit();' /> 10% 이하
+    <input type='radio' name='abv' value='over_10'
+           th:checked="${selectedAlcohol == 'over_10'}" onchange='this.form.submit();' /> 10% ~ 20%
+    <input type='radio' name='abv' value='over_20'
+           th:checked="${selectedAlcohol == 'over_20'}" onchange='this.form.submit();' /> 20% ~ 30%
+    <input type='radio' name='abv' value='over_30'
+           th:checked="${selectedAlcohol == 'over_30'}" onchange='this.form.submit();' /> 30% ~ 40%
+    <input type='radio' name='abv' value='over_40'
+           th:checked="${selectedAlcohol == 'over_40'}" onchange='this.form.submit();' /> 40% 이상
+    <input type='radio' name='abv' value=''
+           th:checked="${selectedAlcohol == ''}" onchange='this.form.submit();' /> 전체
+    <br>
+    <br>
+    나이대<br>
+    <input type='radio' name='ageGroup' value='over_age_20'
+           th:checked="${selectedageGroup == 'over_age_20'}" onchange='this.form.submit();' /> 20대
+    <input type='radio' name='ageGroup' value='over_age_30'
+           th:checked="${selectedageGroup == 'over_age_30'}" onchange='this.form.submit();' /> 30대
+    <input type='radio' name='ageGroup' value='over_age_40'
+           th:checked="${selectedageGroup == 'over_age_40'}" onchange='this.form.submit();' /> 40대
+    <input type='radio' name='ageGroup' value='over_age_50'
+           th:checked="${selectedageGroup == 'over_age_50'}" onchange='this.form.submit();' /> 50대
+    <input type='radio' name='ageGroup' value='over_age_60'
+           th:checked="${selectedageGroup == 'over_age_60'}" onchange='this.form.submit();' /> 60대 이상
+    <input type='radio' name='ageGroup' value=''
+           th:checked="${selectedageGroup == ''}" onchange='this.form.submit();' /> 전체
+    <br>
+
+</form>
+
+<form action="/cocktail/search" method="get">
+    <h2>검색어 검색</h2>
+    <input type="search" name="keyword" placeholder="검색어를 입력하세요.">
+    <button type="submit">검색</button>
+</form>
 
 <form id="search-form" method="post" role="search">
     <label for="user-search">사이트 내 검색</label>
@@ -42,6 +108,7 @@
 <!--<br>-->
 
 <table>
+    <p th:if="${buttonText != null}" th:text="'추천 이유: ' + ${buttonText}"></p>
     <tr th:each="cocktail, iterStat : ${cocktails}">
         <td>
             <div>
