@@ -22,8 +22,6 @@ public class CocktailDTO {
     private int priceRange; // 가격
     private String cocktailInfo; // 정보
     private String image; // 이미지
-    private List<IngredientDTO> ingredients;
-    private Long cocktailIdx;
-    private String base; // 이미지
+    private List ingredients;
 
 }
